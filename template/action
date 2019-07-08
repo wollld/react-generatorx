@@ -1,0 +1,18 @@
+import ...
+
+export function fetchTaskListData(url,fn){
+    return (dispatch) => {
+        return Fetch(url,{credentials: 'include'})
+            .then(response => response.json())
+            .then(data => {
+                if(data.success===true){
+                    if(fn){
+                        fn(data);
+                    }
+                    return dispatch(storeTaskListData(makeResponseData(data)));
+                }else{
+                    ToastCustom.show(data.msg);
+                }
+            });
+    };
+}

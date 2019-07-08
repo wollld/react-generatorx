@@ -1,0 +1,60 @@
+{
+  "_from": "react-generatorx",
+  "_id": "react-generatorx@1.0.14",
+  "_inBundle": false,
+  "_integrity": "sha1-UUWRpZ6AvgrYvKp/z1EqHWXWNYU=",
+  "_location": "/react-generatorx",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-generatorx",
+    "name": "react-generatorx",
+    "escapedName": "react-generatorx",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "http://r.cnpmjs.org/react-generatorx/download/react-generatorx-1.0.14.tgz",
+  "_shasum": "514591a59e80be0ad8bcaa7fcf512a1d65d63585",
+  "_spec": "react-generatorx",
+  "_where": "C:\\Users\\aud\\desktop",
+  "author": {
+    "name": "land chen"
+  },
+  "bin": {
+    "react": "./bin/react.js"
+  },
+  "bugs": {
+    "url": "https://github.com/wollld/react-generatorx/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "commander": "2.7.1",
+    "mkdirp": "0.5.1",
+    "sorted-object": "1.0.0"
+  },
+  "deprecated": false,
+  "description": "react project build helper",
+  "engines": {
+    "node": ">=4.0"
+  },
+  "homepage": "https://github.com/wollld/react-generatorx#readme",
+  "keywords": [
+    "react",
+    "generator"
+  ],
+  "license": "ISC",
+  "main": "bin/react.js",
+  "name": "react-generatorx",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wollld/react-generatorx.git"
+  },
+  "scripts": {},
+  "version": "1.0.14"
+}

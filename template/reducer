@@ -1,0 +1,22 @@
+function taskList(state={STATUS:{}},action){
+    switch(action.type){
+        case 'STORE_TASK_LIST_DATA':
+            console.log('++STORE_TASK_LIST_DATA action.data++',action.data)
+            return Object.assign(
+                {},
+                state,action.data,
+                (!action.data.sliceList||action.data.sliceList.length===0)?{sliceList:state.sliceList}:{}
+            );
+        case 'APPEND_TASK_LIST_DATA':
+            return Object.assign(
+                {},
+                state,
+                {taskList:state.taskList.slice().concat(action.data)}
+            );
+        default:
+            return state;
+    }
+
+}
+
+export default {taskList};

@@ -1,0 +1,68 @@
+//第三方库
+import React,{Component} from 'react';
+import createHistory from 'history/createHashHistory';
+import {createStore,applyMiddleware} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction';//调试
+import reduxThunk from 'redux-thunk';
+import { Route } from 'react-router';
+import reducers from '../../redux/reducer';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import {Provider} from 'react-redux';
+
+//自定义
+import TaskList from './TaskList';
+import Detail from  './Detail';
+import DoTask from './DoTask';
+import Preview from './Preview';
+import SearchTask from './SearchTask';
+import CheckBoxSelect from 'audaque-ssz/commonComponent/inputBox/CheckBox/select';
+import RadioSelect from 'audaque-ssz/commonComponent/inputBox/Radio/select';
+import RangeBoxSelect from 'audaque-ssz/commonComponent/inputBox/RangeBox/select';
+import CascadeBoxSelect from 'audaque-ssz/commonComponent/inputBox/CascadeBox/select';
+import AddressSelect from 'audaque-ssz/commonComponent/inputBox/Address/select';
+import AddressSearch from 'audaque-ssz/commonComponent/inputBox/Address/search';
+import TagsSelect from 'audaque-ssz/commonComponent/inputBox/Tags/select';
+import CheckRepeat from 'audaque-ssz/commonComponent/inputBox/TextBox/CheckRepeat';
+import {fetchUserInfoData} from '../../redux/action/userInfo';
+
+//store
+const composeEnhancers = composeWithDevTools({ realtime: true, port: 8000 });
+const history= createHistory({
+    hashType: 'noslash'//#hash
+});
+const historyMiddleware= routerMiddleware(history);
+const store=createStore(
+    reducers,
+    composeEnhancers(applyMiddleware(historyMiddleware,reduxThunk))
+);
+
+
+class TaskAction extends Component{
+
+    render(){
+       
+        return (
+            <Provider store={store}>
+                <ConnectedRouter history={history}>
+                    <div style={{flex:1}}>
+                        <Route exact path='/' component={TaskList}/>
+                        <Route  path='/Detail/:templateId' component={Detail}/>
+                        <Route  path='/SearchTask' component={SearchTask}/>
+                        <Route  path='/Preview' component={Preview}/>
+                        <Route  path='/DoTask/:type/:id' component={DoTask}/>{/* type:1 做任务 2.查看任务；id：可以为templateId taskId*/}
+                        <Route  path='/CheckBoxSelect/:templateId/:index' component={CheckBoxSelect}/>
+                        <Route  path='/RadioSelect/:templateId/:index' component={RadioSelect}/>
+                        <Route  path='/RangeBoxSelect/:templateId/:index' component={RangeBoxSelect}/>
+                        <Route  path='/CascadeBoxSelect/:templateId/:index' component={CascadeBoxSelect}/>
+                        <Route  path='/AddressSelect/:templateId/:index' component={AddressSelect}/>
+                        <Route  path='/AddressSearch/:templateId/:index' component={AddressSearch}/>
+                        <Route  path='/TagsSelect/:templateId/:index' component={TagsSelect}/>
+                        <Route  path='/CheckRepeat/:templateId/:index' component={CheckRepeat}/>
+                    </div>
+                </ConnectedRouter>
+            </Provider>
+        );
+    }
+}
+
+export default TaskAction;

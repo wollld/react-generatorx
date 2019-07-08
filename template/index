@@ -1,0 +1,12 @@
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends Component{
+	render(){
+		//style can write like style={{...{top:10},...{bottom:10}}} to combine two
+		return <div>hello world</div>
+	}
+	
+}
+
+ReactDOM.render(<App/>,document.getElementById('react-root'))
